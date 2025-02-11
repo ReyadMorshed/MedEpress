@@ -11,6 +11,7 @@ import pages.MedExpresLoginPage;
 import pages.MedExpressHomepage;
 import pages.MedExpressLandingPage;
 
+import javax.inject.Inject;
 import org.testng.Assert;
 
 import actions.MedExpressCustomerActions;
@@ -23,6 +24,12 @@ public class MedExpressLoginTestSteps extends Base {
 	MedExpresLoginPage loginPage = null;
 	MedExpressHomepage homePage = null;
 	MedExpressCustomerActions CustomarActions = new MedExpressCustomerActions();
+	TestContext testContext;  // Shared Test Context
+	
+	@Inject
+    public MedExpressLoginTestSteps(TestContext testContext) {
+        this.testContext = testContext;
+    }
 	
 	@Given("Navigate to MedExpress website")
 	public void navigate_to_med_express_website() {
@@ -54,6 +61,7 @@ public class MedExpressLoginTestSteps extends Base {
 	public void click_on_the_login_button() throws InterruptedException {
 		
 		homePage = CustomarActions.customerCanCLickOnSignInButton(loginPage);
+		testContext.setHomePage(homePage);
 	}
 	@Then("validate the homepage")
 	public void validate_the_homepage() throws InterruptedException {

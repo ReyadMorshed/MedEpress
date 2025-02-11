@@ -50,6 +50,20 @@
             <version>3.1.1</version>
         </dependency>
         
+        <dependency>
+    		<groupId>io.cucumber</groupId>
+    		<artifactId>cucumber-picocontainer</artifactId>
+    		<version>7.14.0</version>  <!-- Use latest version -->
+   			 <scope>test</scope>
+		</dependency>
+		
+		<dependency>
+    		<groupId>javax.inject</groupId>
+    		<artifactId>javax.inject</artifactId>
+    		<version>1</version>
+		</dependency>
+
+
         
 
 
