@@ -7,6 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.File;
 public class Base {
 
     protected static WebDriver driver;
@@ -69,7 +75,27 @@ public class Base {
     }
     
     protected static void pressEnterKey(WebElement element) {
-        element.sendKeys(Keys.ENTER);;
+        element.sendKeys(Keys.ENTER);
+    }
+    
+    protected static void pasteFilePath(String filePath) {
+        try {
+            Robot robo = new Robot();
+            StringSelection str = new StringSelection(filePath);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(str, null);
+
+            // Simulate Ctrl+V
+            robo.keyPress(KeyEvent.VK_CONTROL);
+            robo.keyPress(KeyEvent.VK_V);
+            robo.keyRelease(KeyEvent.VK_V);
+            robo.keyRelease(KeyEvent.VK_CONTROL);
+            
+            // Simulate Enter key
+            robo.keyPress(KeyEvent.VK_ENTER);
+            robo.keyRelease(KeyEvent.VK_ENTER);
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
     }
 
 }

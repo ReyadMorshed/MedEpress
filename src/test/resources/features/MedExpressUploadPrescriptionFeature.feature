@@ -1,9 +1,8 @@
-
-@Smoke
+@Regression
 Feature: Customer upload prescription feature
   As a customer I want to login and upload prescription to the Medexpress customer website
 
-  @Smoke
+  @Regression
   Scenario: User will be able to login with valid credentials
     Given Navigate to MedExpress website
     And Validate the landing page
@@ -19,5 +18,3 @@ Feature: Customer upload prescription feature
     And click on shipping address button
     And click on confirm button
     Then validate the order confirmation
-
-  

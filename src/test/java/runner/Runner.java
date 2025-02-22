@@ -12,7 +12,7 @@ import java.io.File;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "stepDefinitions",
-        tags = "@Smoke or @Regression",
+        tags = "@Regression",
         dryRun = false,
         monochrome = true,
         plugin = { "html:target/reports/extent-report.html" }
